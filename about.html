@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bpaas-design-system" content="editorial-apple">
+    <meta name="bpaas-design-theme" content="kr-noir-burgundy">
+    <title>소개 — 서울 야간경제 용어 사전</title>
+    <meta name="description" content="서울 지역의 다양한 유흥 업종과 복잡한 전문 용어를 투명하고 객관적인 데이터 기반으로 분석하여 제공하는 전문 정보 블로그의 운영 목적과 철학을 소개합니다.">
+    <meta name="keywords" content="유흥 용어 정리, 블로그 소개, 정보 비대칭 해소, 룸티, 주대, TC, 객관적 분석">
+    <link rel="canonical" href="https://digest.best-seocho-karaoke.xyz/about.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="소개 — 서울 야간경제 용어 사전">
+    <meta property="og:description" content="정보의 비대칭성을 해소하고 투명한 선택을 돕는 전문 분석 플랫폼의 가치와 철학을 공개합니다.">
+    <meta property="og:url" content="https://digest.best-seocho-karaoke.xyz/about.html">
+    
+    <style>
+        :root {
+            --bg-color: #0c0c0e;
+            --panel-bg: #141416;
+            --panel-border: #232326;
+            --primary-color: #800020; /* Burgundy */
+            --primary-hover: #9e1b32;
+            --text-main: #f5f5f7;
+            --text-muted: #86868b;
+            --text-weak: #48484a;
+            --accent-color: #d4af37; /* Subtle Gold */
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        header {
+            border-bottom: 1px solid var(--panel-border);
+            position: sticky;
+            top: 0;
+            background-color: rgba(12, 12, 14, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger Menu Pattern */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: var(--text-main);
+            margin: 4px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 4px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(128, 0, 32, 0.15) 0%, rgba(12, 12, 14, 0) 70%);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-color);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #f5f5f7 30%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* Editorial Split Section */
+        .editorial-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--panel-border);
+        }
+
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .editorial-meta {
+            position: sticky;
+            top: 120px;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .editorial-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.3;
+            color: var(--text-main);
+        }
+
+        .editorial-body {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .editorial-body p {
+            margin-bottom: 24px;
+        }
+
+        .editorial-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Data-Backed Pillar Cards */
+        .pillars-section {
+            padding: 80px 0;
+            background-color: var(--panel-bg);
+            border-top: 1px solid var(--panel-border);
+            border-bottom: 1px solid var(--panel-border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-title {
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .pillar-card {
+            background-color: var(--bg-color);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            padding: 40px 32px;
+            transition: var(--transition-smooth);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+        }
+
+        .pillar-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(128, 0, 32, 0.3);
+            line-height: 1;
+            margin-bottom: 24px;
+            font-family: Georgia, serif;
+        }
+
+        .pillar-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .pillar-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* FAQ Accordion Section */
+        .faq-section {
+            padding: 100px 0;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--panel-border);
+            padding: 24px 0;
+        }
+
+        .faq-item:first-child {
+            padding-top: 0;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-question::before {
+            content: "Q.";
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding-left: 24px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #070708;
+            border-top: 1px solid var(--panel-border);
+            padding: 64px 0 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .brand-logo {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            line-height: 1.6;
+            max-width: 320px;
+        }
+
+        .footer-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--panel-border);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: var(--text-weak);
+            line-height: 1.5;
+            margin-top: 16px;
+            width: 100%;
+        }
+
+        /* Responsive-768 Hamburger Pattern */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-color);
+                border-bottom: 1px solid var(--panel-border);
+                padding: 24px;
+                gap: 16px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .grid-split {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .editorial-meta {
+                position: static;
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="https://digest.best-seocho-karaoke.xyz" class="logo">
+                <span>■</span> 서울 야간경제 용어 사전
+            </a>
+            
+            <button class="menu-toggle" aria-label="메뉴 열기" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="https://digest.best-seocho-karaoke.xyz" class="nav-link">홈</a></li>
+                <li><a href="https://digest.best-seocho-karaoke.xyz/terms" class="nav-link">용어 사전</a></li>
+                <li><a href="https://digest.best-seocho-karaoke.xyz/guide" class="nav-link">업종별 분석</a></li>
+                <li><a href="https://digest.best-seocho-karaoke.xyz/about" class="nav-link active">소개</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <span class="hero-badge">ABOUT US</span>
+            <h1 class="hero-title">정보의 비대칭을 해소하고<br><span>객관적인 기준을 제시합니다</span></h1>
+            <p class="hero-subtitle">
+                서울 야간경제 용어 사전은 왜곡되거나 불투명한 유흥 업종의 용어와 시스템을 객관적인 지표와 분석적 시각으로 정리하여 전달하는 전문 정보 플랫폼입니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- Editorial Concept Section -->
+    <section class="editorial-section">
+        <div class="container grid-split">
+            <div class="editorial-meta">
+                <span class="section-label">THE MISSION</span>
+                <h2 class="editorial-heading">소비자의 주체적인 선택과 권리를 보호하기 위하여</h2>
+            </div>
+            <div class="editorial-body">
+                <p>
+                    야간경제(Nighttime Economy) 시장은 다양한 업종과 형태가 존재하지만, 관련 정보의 폐쇄성으로 인해 처음 방문을 고려하거나 정보를 탐색하는 소비자들이 불필요한 혼선과 왜곡된 정보에 노출되기 쉽습니다.
+                </p>
+                <p>
+                    특히 룸티, 주대, 테이블 차지(TC) 등 현장에서 사용되는 특수한 용어들은 사전 지식이 없는 이들에게 진입장벽이자 불합리한 비용 청구의 원인이 되기도 합니다. 본 플랫폼은 이러한 정보의 비대칭성을 해소하기 위해 설립되었습니다.
+                </p>
+                <p>
+                    우리는 특정 업소를 광고하거나 미화하지 않으며, 오직 업계 표준으로 통용되는 정량적 구조와 정성적 특징을 중립적이고 객관적인 태도로 분류하여 제공합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Pillars Section -->
+    <section class="pillars-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">OUR VALUES</span>
+                <h2 class="section-title">정보 분석의 3대 핵심 원칙</h2>
+                <p class="section-desc">우리는 사실 기반의 서술과 객관성 유지를 최우선의 가치로 삼고 콘텐츠를 생산합니다.</p>
+            </div>
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <div class="pillar-num">01</div>
+                    <h3 class="pillar-title">데이터 기반의 표준 분석</h3>
+                    <p class="pillar-desc">업소별로 상이하게 적용되는 가격 체계와 시스템을 비교 분석하여 보편적인 시장 평균과 표준 가이드를 제시합니다.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-num">02</div>
+                    <h3 class="pillar-title">엄격한 중립성 유지</h3>
+                    <p class="pillar-desc">특정 업체로부터 경제적 대가를 전제로 한 홍보나 주관적 미화를 철저히 배제하고 중립적인 정보만을 다룹니다.</p>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-num">03</div>
+                    <h3 class="pillar-title">직관적인 용어 사전화</h3>
+                    <p class="pillar-desc">가라오케, 셔츠룸, 텐프로 등 모호하게 혼용되는 다양한 업종의 핵심 차이점을 일반인의 눈높이에 맞게 체계화합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">자주 묻는 질문</h2>
+                <p class="section-desc">블로그 운영 및 자료 수집 기준에 대한 투명한 답변입니다.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3 class="faq-question">본 블로그에서 다루는 정보의 출처는 어디인가요?</h3>
+                    <p class="faq-answer">
+                        서울 주요 상권(강남, 서초 등)의 업종별 평균 공시 주대와 실제 소비자들이 겪는 표준 계약 관행, 그리고 업계 전문가들의 교차 검증을 거친 데이터를 바탕으로 작성됩니다.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">특정 업소를 추천하거나 예약 대행을 진행하나요?</h3>
+                    <p class="faq-answer">
+                        아니요. 본 플랫폼은 순수 정보 제공을 목적으로 하는 아카이브 블로그입니다. 어떠한 형태의 예약 대행, 호객 행위, 특정 업소 알선 및 광고 제휴를 진행하지 않습니다.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="faq-question">용어 해석이나 시스템 설명에 오류가 있다면 어떻게 하나요?</h3>
+                    <p class="faq-answer">
+                        시장 트렌드 변화에 따라 용어의 기준과 시스템이 변경될 수 있습니다. 주기적인 모니터링을 통해 최신 정보를 반영하고 있으며, 오류 지적이나 수정 제안은 언제나 환영합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">■ 서울 야간경제 용어 사전</div>
+                    <p>본 플랫폼은 서울 지역 야간경제 활동과 관련된 복잡한 유흥 용어와 시스템을 객관적인 시각에서 분석하고 기록하는 아카이브 사이트입니다.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">메뉴 바로가기</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://digest.best-seocho-karaoke.xyz">홈</a></li>
+                        <li><a href="https://digest.best-seocho-karaoke.xyz/terms">용어 사전</a></li>
+                        <li><a href="https://digest.best-seocho-karaoke.xyz/guide">업종별 분석</a></li>
+                        <li><a href="https://digest.best-seocho-karaoke.xyz/about">소개</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">이용 기준</h4>
+                    <ul class="footer-links">
+                        <li>개인정보 처리방침</li>
+                        <li>이용 약관</li>
+                        <li>책임 한계 고지</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Seoul Nighttime Economy Lexicon. All rights reserved.</p>
+                <div class="footer-disclaimer">
+                    면책 조항: 본 사이트에서 제공하는 정보는 단순 참고용이며, 어떠한 법적 책임이나 계약의 효력을 보증하지 않습니다. 소비자는 각자의 책임 하에 합리적이고 안전한 선택을 하시기 바랍니다.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
