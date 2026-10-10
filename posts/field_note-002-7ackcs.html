@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRISM 7장이 알려준 ACL, 네가 보는 업소 리뷰는 표면 로고일 뿐이다</title>
-<meta name="description" content="PRISM 슬라이드 7장은 이상해. 아니, 그걸 보는 사람들 말이야. 다들 로고만 기억하잖아? Google, Facebook, Apple 딱지. 근데 진짜 핵심은 로고가 아니라 7장에 적힌 FAA 702 수정안과 업스트림 수집의 경계점에 있었거든.">
+<meta name="description" content="PRISM 슬라이드의 ACL 구조에서 착안해, 표면적인 용어나 후기 뒤에 숨은 조건부 안내와 메타데이터를 다각도로 분석하는 시각을 정리한 필드 노트입니다.">
   <link rel="canonical" href="https://digest.best-seocho-karaoke.xyz/posts/field_note-002-7ackcs.html">
   <style>
     body { font-family: sans-serif; line-height: 1.8; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
@@ -16,8 +16,13 @@
     a:hover { text-decoration: underline; }
   </style>
   <meta property="og:url" content="https://digest.best-seocho-karaoke.xyz/posts/field_note-002-7ackcs.html">
-  <meta property="og:title" content="PRISM 7장이 알려준 ACL, 네가 보는 업소 리뷰는 표면 로고일 뿐이다">
-  <meta property="og:description" content="PRISM 슬라이드 7장은 이상해. 아니, 그걸 보는 사람들 말이야. 다들 로고만 기억하잖아? Google, Facebook, Apple 딱지. 근데 진짜 핵심은 로고가 아니라 7장에 적힌 FAA 702 수정안과 업스트림 수집의 경계점에 있었거든.">
+<style data-post-index-reader-style="true">
+div[data-post-index-navigation="true"] { display:block !important; visibility:visible !important; position:fixed; right:16px; bottom:16px; z-index:1001; max-width:calc(100% - 32px); padding:0; text-align:right; }
+div[data-post-index-navigation="true"] a { display:inline-flex !important; visibility:visible !important; align-items:center; padding:8px 14px; border:1px solid currentColor; border-radius:6px; background:Canvas; color:CanvasText; text-decoration:none; }
+nav.pager, nav.post-pager, nav[data-site-documents="true"] { display:flex !important; visibility:visible !important; flex-wrap:wrap; gap:12px; padding:16px 0; }
+nav.pager a, nav.post-pager a, nav[data-site-documents="true"] a { display:inline-flex !important; visibility:visible !important; align-items:center; padding:6px 10px; color:inherit; }
+</style>  <meta property="og:title" content="PRISM 7장이 알려준 ACL, 네가 보는 업소 리뷰는 표면 로고일 뿐이다">
+  <meta property="og:description" content="PRISM 슬라이드의 ACL 구조에서 착안해, 표면적인 용어나 후기 뒤에 숨은 조건부 안내와 메타데이터를 다각도로 분석하는 시각을 정리한 필드 노트입니다.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
 </head>
@@ -27,24 +32,22 @@
   </header>
   <main>
     <h1>PRISM 7장이 알려준 ACL, 네가 보는 업소 리뷰는 표면 로고일 뿐이다</h1>
-    <article>
-      <p>PRISM 슬라이드 7장은 이상해. 아니, 그걸 보는 사람들 말이야. 다들 로고만 기억하잖아? Google, Facebook, Apple 딱지. 근데 진짜 핵심은 로고가 아니라 7장에 적힌 FAA 702 수정안과 업스트림 수집의 경계점에 있었거든. 잘 몰라서 그런데, 나도 처음에 7장 보고 "아 NSA가 저 회사 서버에 직접 꽂는구나"라고 생각했어. 완전 초보적인 실수였지.</p>
+    <article><p>PRISM 슬라이드 7장은 이상해. 아니, 그걸 보는 사람들 말이야. 다들 로고만 기억하잖아? Google, Facebook, Apple 딱지. 근데 진짜 핵심은 로고가 아니라 7장에 적힌 FAA 702 수정안과 업스트림 수집의 경계점에 있었거든. 잘 몰라서 그런데, 나도 처음에 7장 보고 "아 NSA가 저 회사 서버에 직접 꽂는구나"라고 생각했어. 완전 초보적인 실수였지.</p>
 <p>원본 USB에 담긴 로우 데이터랑 언론 공개본을 비교해보니 완전히 다른 그림이 나오더라. 언론은 7장의 로고만 확대했어. 근데 그 아래 미세하게 적힌 ACL(Access Control List) 구조가 진짜 설계도였거든. 특정 타임프레임(주간/야간)에 따라 Selector의 접근 권한이 스위칭되는 조건이 핵심이었는데, 그건 아무도 안 알려줬어.</p>
 <h3>관찰 시각: 로고가 아니라 ACL 구조</h3>
-<p>이게 지금 강남 업소 용어랑 완전히 똑같은 패턴이야. 'VIP', '아도니스', '허니' 같은 용어는 그냥 표면 로고에 불과해. 뉴비는 수집 대상 기업(업소명)에 집중하지만, 숙련자는 "어떤 조건에서 접근 권한이 활성화되는가"를 봐. PRISM 7장의 ACL이 특정 시간대에 따라 Selector를 스위칭하듯, 현장의 서비스 조건도 주간과 야간, 리뷰어의 인증 단계에 따라 필터링 조건이 완전히 달라져.</p>
-<p>예를 들어 어떤 사이트의 분류 체계를 보면 시간대별 운영 조건이나 리뷰어 인증 단계가 이 ACL 구조랑 완전 유사하게 짜여 있어. <a href="https://mr-footmassage.com/" target="_blank" rel="noopener noreferrer">자세한 내용 보기</a> 여기 가보면 그 기준이 어떻게 설정되어 있는지 바로 비교할 수 있을 거야. 미리 말해두는데, 이건 단순한 용어 나열이 아니라 조건부 접근 시스템을 읽는 훈련이야.</p>
-<h3>현장 단서: 시간당 지출의 NPV 계산</h3>
-<p>구체적인 수치로 들어가보자. 초보자는 "30분 / 8만원"이라는 가격(로고)만 보고 판단해. 근데 프로는 전체 생애 비용을 계산하지.</p>
-<p>예를 들어 계산을 해보자. 기본 8만원이라고 치자. 여기에 테라피 추가 옵션 2만원, 차량 이동 포함 시간 50분의 기회비용을 시간당 10만원으로 잡으면 실제 직간접비는 단순 가격의 2배가 넘어가. 5회 방문하면 총 지출은 기회비용 포함해서 100만원에 육박해. 여기서 1회 무료 쿠폰을 준다고 가정해도, 할인율을 연 20%로 잡아 NPV(순현재가치)를 계산해보면 그 쿠폰의 실질 가치는 생각보다 훨씬 낮아. 단순한 가격 비교가 아니라 장기적인 데이터 흐름을 읽는 기준이 있어야 진짜 수익성(만족도)이 나온다는 거지.</p>
+<p>이게 현장에서 마주치는 각종 용어나 후기를 읽는 패턴과 완전히 똑같아. 'VIP', '아도니스', '허니' 같은 명칭은 표면적인 로고일 뿐이지. 입문자는 눈에 보이는 이름에 집착하지만, 제대로 판을 읽는 사람은 "어떤 조건에서 서비스나 권한이 활성화되는가"를 봐. PRISM 7장의 ACL이 시간대에 따라 스위칭되듯, 조건부 안내도 주간/야간 시간대나 방문 기준에 따라 적용 범위가 달라지거든.</p>
+<p>예를 들어 안내된 프로그램의 시간과 가격을 따로 읽는 사례와 비교해보면 이해가 쉬워. 공개된 가격표가 매장의 모든 이용 조건을 다 담았다는 뜻은 아니야. <a href="https://mr-footmassage.com/" target="_blank" rel="noopener noreferrer">자세한 내용 보기</a> 가보면 족욕 포함 시그니처 발 마사지 40분 3.5만 원, 스포츠 전신 60분 6만 원처럼 프로그램별 시간과 요금이 매장 공식 안내로 투명하게 공개되어 있지. 이렇게 고정된 정찰제 기준을 알고 있으면, 조건부 안내나 낯선 용어 뒤에 숨은 서비스 접근 조건(ACL)의 차이를 훨씬 명확하게 구별할 수 있게 돼.</p>
+<h3>현장 단서: 시간당 지출의 NPV 계산 (가정 예시)</h3>
+<p>구체적인 수치 예시로 들어가 보자. 단순 안내 금액만 보고 판단하는 건 로고만 보는 것과 같아. 여기의 기본 8만 원·추가 2만 원은 설명용 가정이며 풋쌤의 실제 옵션이나 견적이 아니야. 실제로는 이동 시간과 자신의 기회비용까지 함께 따져봐야 하지.</p>
+<p>예를 들어 기본 이용료 8만 원에 추가 옵션 2만 원이 붙고, 이동 50분에 대한 기회비용을 본인 시간당 10만 원 정도로 가정해보자. 이 산술 가정을 적용하면 시간 비용은 10만 원 × 50/60으로 약 83,333원, 이용 금액을 합친 설명용 총비용은 약 183,333원이야. 같은 조건으로 5회라면 약 916,667원이지. 이는 개인이 시간을 평가한 가정이지 실제 결제액은 아니야. 1회 무료 쿠폰과 연 20% 할인율을 추가로 가정하더라도, 언제 쓸 수 있는지와 어느 금액을 할인하는지가 빠져 있으면 순현재가치를 계산할 수 없어. 조건이 없는 쿠폰 금액을 임의로 작다고 결론 내리지는 않는 거야. 어디까지나 가상의 산술 예시지만, 표면 가격 뒤의 데이터 흐름을 읽는 기준이 있어야 실제 비용 대비 만족도를 객관적으로 측정할 수 있다는 뜻이야.</p>
 <h3>판단 메모: 메타데이터를 읽어라</h3>
-<p>리뷰의 작성 시간대(Hour stamp)와 리뷰어의 활동 기록(메타데이터)을 크로스 체크하는 게 PRISM 7장이 내게 준 진짜 교훈이야. 특정 시간대(예: 새벽 2~5시)에 리뷰가 집중적으로 몰리는 사이트는 100% 관리자 개입 또는 보상형 리뷰 시스템이 가동 중이라고 봐야 해.</p>
-<p>오류 코드(404, 301 리디렉션)의 빈도로 게시글 필터링 구조를 역추적하는 게 진짜 기술이야. 대부분의 초보는 이걸 전혀 신경 안 쓰고 그냥 로고만 보고 달려들어. 그게 바로 언론이 프리즘 7장을 분석한 방식이랑 같아. 표면만 보고 다 안다고 착각하는 거지.</p>
+<p>리뷰의 작성 시간대(Hour stamp)와 작성자의 활동 패턴 같은 메타데이터를 크로스 체크하는 게 PRISM 7장이 준 핵심 교훈이야. 새벽 2~5시에 리뷰가 모였다는 사실만으로 조작이나 보상을 추정하지는 않아. 야간 이용자의 기록일 수도 있으니까. 받은 리뷰의 방문 상황과 내용, 공개된 보상 여부를 함께 읽고 시각은 보조 단서로 남겨둬.</p>
+<p>오류 코드(404, 301 리디렉션)나 게시글의 필터링 흔적을 역추적해 보는 것도 좋은 방법이지. 표면 로고나 자극적인 문구에 낚이지 않고, 그 밑에 깔린 데이터와 메타 정보를 읽는 게 핵심이야.</p>
 <h3>후속 확인</h3>
-<p>결국 다시 7장으로 돌아가서 해석해보면, 그 슬라이드는 NSA가 *뭘* 수집했는지에 대한 기록이 아니었어. *어떻게* 특정 조건을 가진 사람만 이 데이터를 읽을 수 있는지에 대한 설계도였지. 처음 봤을 땐 그냥 예쁜 로고가 박힌 문서였는데, 지금 보니 완전히 다른 필터링 시스템이 숨어 있는 게 보여. 현장 용어도 마찬가지야. 단어를 외운다고 끝이 아니야. 그 용어가 특정 조건(주간, 비용 범위, 리뷰어 신뢰도)에서 어떻게 ACL이 걸리고 작동하는지 그 데이터 흐름을 통째로 읽어야 한다는 게 내가 내린 결론이야.</p>
-    </article>
+<p>결국 다시 7장으로 돌아가서 해석해보면, 그 슬라이드는 단순히 데이터를 어디서 가져왔는가에 대한 목록이 아니었어. 특정 조건 아래에서 데이터를 어떻게 필터링하고 보여주는지에 대한 설계도였지. 현장 용어나 후기 분석도 마찬가지야. 단어 뜻 몇 개 외운다고 끝이 아니야. 그 조건이 실제 상황(시간대, 비용 범위, 조건부 안내)에서 어떻게 작동하고 제한을 거는지, 데이터 흐름 전체를 읽어내는 눈을 키워야 해.</p></article>
       <nav class="post-pager" aria-label="글 이동">
       <a class="post-pager__index" href="../posts.html">글 목록</a>
-      <a class="post-pager__next" href="../posts/field_note-002-n5q75q.html">유흥 용어 정리 현장에서 확인한 선택 기준과 주의점 →</a>
+      <a class="post-pager__next" href="field_note-002-n5q75q.html">유흥 용어 정리 현장에서 확인한 선택 기준과 주의점 →</a>
     </nav>
     </main>
 </body>
